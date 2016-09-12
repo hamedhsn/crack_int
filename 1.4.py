@@ -1,18 +1,14 @@
 ''' Palindrome Permutation '''
 
 
-# O(n) solution
+# O(n) solution - use array to count each char - check at the end
+# assumption is to ignore non characters
 def is_palindrome_perm_1(inp_str):
-    # remove whitespace
-    inp_str = str.strip(inp_str)
-
-    if len(inp_str) < 2:
-        return False
-
     ascii_list = [0 for i in range(128)]
 
-    for c in inp_str:
-        ascii_list[ord(c)] += 1
+    for c in str.lower(inp_str):
+        if ord('a') <= ord(c) <= ord('z'):
+            ascii_list[ord(c)] += 1
 
     found_diff_lett = False
 
@@ -26,6 +22,30 @@ def is_palindrome_perm_1(inp_str):
     return True
 
 
+# O(n) solution - use array to count each char - know result at the end
+# slight improvement over is_palindrome_perm_1
+# assumption is to ignore non characters
+def is_palindrome_perm_2(inp_str):
+
+    char_num = [0 for i in range(26)]
+
+    num_odds = 0
+    for c in str.lower(inp_str):
+        if ord('a') <= ord(c) <= ord('z'):
+            char_num[get_char_num(c)] += 1
+            if not is_even(char_num[get_char_num(c)]):
+                num_odds += 1
+            else:
+                num_odds -= 1
+
+    print(num_odds)
+    return num_odds <= 1
+
+
+def get_char_num(ch):
+    return ord(ch) - ord('a')
+
+
 def is_even(num):
     if num % 2:
         return False
@@ -33,4 +53,4 @@ def is_even(num):
         return True
 
 if __name__ == '__main__':
-    print(is_palindrome_perm_1('cacaw '))
+    print(is_palindrome_perm_2('cacawwt /3 RT'))
