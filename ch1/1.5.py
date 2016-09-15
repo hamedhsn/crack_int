@@ -23,7 +23,7 @@ def insert_remove_check(st1, st2):
 
 
 def replace_check(st1, st2):
-    num_diff = 0
+    num_diff = -1
     for ind, ch in enumerate(st1):
         if ch != st2[ind]:
             num_diff += 1
@@ -31,28 +31,41 @@ def replace_check(st1, st2):
     return not bool(num_diff)
 
 
-# complexity is O(n)
+# complexity is O(n) - combine the three operation
 def find_one_away_2(str1, str2):
     if abs(len(str1) - len(str2)) > 1:
         return False
 
-    if len(str1) <= len(str2):
-        return check_ops(str1, str2)
-    else:
-        return check_ops(str2, str1)
+    str1, str2 = (str1, str2) if len(str1) <= len(str2) else (str2, str1)
+
+    return check_ops(str1, str2)
 
 
 def check_ops(st1, st2):
+    """
+
+    :param st1: shorter string
+    :param st2: longer string
+    :return: True if they are one operation away False otherwise
+    """
     num_diff = 0
     for ind, ch in enumerate(st1):
         if ch != st2[ind]:
             num_diff += 1
-            return False
 
-    return True and not bool(num_diff)
+    if len(st1) != len(st2) and num_diff:
+        return False
+
+    if len(st1) == len(st2) and num_diff > 1:
+        return False
+
+    return True
+
+    # return True and not bool(num_diff)
 
 if __name__ == '__main__':
-    inp1 = 'tesths'
-    inp2 = 'testhsn'
-    print(find_one_away_1(inp1, inp2))
-    print(find_one_away_2(inp1, inp2))
+    inp1 = ['tesths', 'wwwwgw', 'wq', 'we']
+    inp2 = ['testhsn', 'w', 'www', 'wq']
+    for inp in zip(inp1, inp2):
+        print('First solution : {} vs {} ->  {}'.format(inp[0], inp[1], find_one_away_1(inp[0], inp[1])))
+        print('First solution : {} vs {} ->  {}'.format(inp[0], inp[1], find_one_away_2(inp[0], inp[1])))
