@@ -3,6 +3,12 @@
 
 # complexity is O(n)
 def find_one_away_1(str1, str2):
+    """ first solution
+
+    :param str1: first input string
+    :param str2: second input string
+    :return:
+    """
     if abs(len(str1) - len(str2)) > 1:
         return False
 
@@ -15,6 +21,12 @@ def find_one_away_1(str1, str2):
 
 
 def insert_remove_check(st1, st2):
+    """ check for any one way change in insert/remove
+
+    :param st1: first input string
+    :param st2: second input string
+    :return:
+    """
     for ind, ch in enumerate(st1):
         if ch != st2[ind]:
             return False
@@ -23,6 +35,12 @@ def insert_remove_check(st1, st2):
 
 
 def replace_check(st1, st2):
+    """ check for any one replacement change
+
+    :param st1: first input string
+    :param st2: second input string
+    :return:
+    """
     num_diff = -1
     for ind, ch in enumerate(st1):
         if ch != st2[ind]:
@@ -30,9 +48,17 @@ def replace_check(st1, st2):
 
     return not bool(num_diff)
 
+''' --------------------------------------------------------------------------------------- '''
 
-# complexity is O(n) - combine the three operation
+
+# complexity is O(n) - combine the three operation check into one
 def find_one_away_2(str1, str2):
+    """ combine the insert/remove function with replace function in previouse solution
+
+    :param st1: first input string
+    :param st2: second input string
+    :return: 
+    """
     if abs(len(str1) - len(str2)) > 1:
         return False
 
@@ -42,7 +68,7 @@ def find_one_away_2(str1, str2):
 
 
 def check_ops(st1, st2):
-    """
+    """ check for
 
     :param st1: shorter string
     :param st2: longer string
@@ -61,11 +87,10 @@ def check_ops(st1, st2):
 
     return True
 
-    # return True and not bool(num_diff)
 
 if __name__ == '__main__':
-    inp1 = ['tesths', 'wwwwgw', 'wq', 'we']
-    inp2 = ['testhsn', 'w', 'www', 'wq']
+    inp1 = ['tesths', 'wwwwgw', 'wq', 'we', 'testw']
+    inp2 = ['testhsn', 'w', 'www', 'wq', 'tertq']
     for inp in zip(inp1, inp2):
         print('First solution : {} vs {} ->  {}'.format(inp[0], inp[1], find_one_away_1(inp[0], inp[1])))
         print('First solution : {} vs {} ->  {}'.format(inp[0], inp[1], find_one_away_2(inp[0], inp[1])))
