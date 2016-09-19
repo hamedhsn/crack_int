@@ -57,7 +57,7 @@ def find_one_away_2(str1, str2):
 
     :param st1: first input string
     :param st2: second input string
-    :return: 
+    :return:
     """
     if abs(len(str1) - len(str2)) > 1:
         return False
