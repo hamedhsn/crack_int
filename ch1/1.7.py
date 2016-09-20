@@ -21,4 +21,5 @@ def rotate_matrix(a, n):
     return ''.join(b)
 
 if __name__ == '__main__':
-    print(find('abcdefghijklmnop', 4))
+    print(rotate_matrix('abcdefghijklmnop', 4))
+    print(rotate_matrix('abcdefghi', 3))
