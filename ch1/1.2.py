@@ -1,3 +1,6 @@
+# ''' check permutation'''
+
+
 # sort two strings and compare complexity= O(nlogn)
 def str_perm_comparison_sort(str1, str2):
     if len(str1) != len(str2):

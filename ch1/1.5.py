@@ -1,4 +1,4 @@
-''' 1.5. One way'''
+# ''' One way'''
 
 
 # complexity is O(n)

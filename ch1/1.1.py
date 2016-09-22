@@ -1,3 +1,6 @@
+# ''' is Unique'''
+
+
 # using list with size 128 assume string contains ASCII code - O(n)
 def detect_nonunique_str_1(st):
     if len(st) > 128:
