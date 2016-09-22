@@ -1,6 +1,7 @@
 # ''' Zero matrix '''
 
-# complexity O(no_rows, no_cols) -
+
+# complexity O(no_rows, no_cols)
 def replace_zeros(inp_mx, no_rows, no_cols):
     """ replace all the zeros and corresponding rows and cols
 
