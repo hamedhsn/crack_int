@@ -30,6 +30,7 @@ def find_zeros(inp_mx, no_rows):
     :param no_rows:
     :return:
     """
+    # we can also use one array for rows and one for cols instead of two dicts
     rows = dict()
     cols = dict()
     for ind, m in enumerate(inp_mx):
