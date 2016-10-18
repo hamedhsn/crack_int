@@ -39,13 +39,15 @@ class LinkedList:
         print('\nno such item deleted')
 
     def print_all(self):
+        print('\nList of the items:')
+
         h = self.head
 
         if not h:
             print('\nlinked list is empty')
             return
 
-        print('\n{}'.format(h.data))
+        print('{}'.format(h.data))
         while h.next:
             print(h.next.data)
             h = h.next
