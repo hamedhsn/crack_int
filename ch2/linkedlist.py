@@ -50,6 +50,16 @@ class LinkedList:
             print(h.next.data)
             h = h.next
 
+    def traverse(self):
+        h = self.head
+        while True:
+            if h.next:
+                yield h
+                h = h.next
+            else:
+                yield h
+                return
+
 
 class Node:
     def __init__(self, d):
@@ -79,3 +89,6 @@ if __name__ == '__main__':
 
     link_list.delete(5)
     link_list.print_all()
+
+    for no, i in enumerate(link_list.traverse(), 1):
+        print('No {}: {}'.format(no, i.data))
