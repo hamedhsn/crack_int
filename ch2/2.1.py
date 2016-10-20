@@ -35,6 +35,33 @@ def remove_dups_using_dict(llist):
     llist.print_all()
 
 
+def remove_dups_using_dict_2(llist):
+    """ Slight improvement to `remove_dups_using_dict` function - duplicates removed at the time of
+    traverse - instead of finding duplicates and then remove them used in `remove_dups_using_dict`
+
+    :param llist: linked list of items
+    """
+    dup_dict = dict()
+
+    for item in llist.traverse():
+
+        if not dup_dict.get(item.data):
+            dup_dict[item.data] = 1
+            continue
+
+        # if node to delete is head
+        if item == llist.head:
+            llist.head = llist.head.next
+            prev_link = item
+            continue
+
+        # for other nodes
+        prev_link.next = item.next
+        prev_link = item
+
+    llist.print_all()
+
+
 def remove_dups_wout_ds(llist):
     """ Remove duplicates without using two pointers - complexity O(N^2)
 
@@ -56,6 +83,9 @@ def remove_dups_wout_ds(llist):
 if __name__ == '__main__':
     llist = LinkedList()
     llist.append_few([1, 5, 2, 3, 4, 1, 2, 5, 6, 5, 1])
+    llist.print_all()
+
+    remove_dups_wout_ds(llist)
     llist.print_all()
 
     remove_dups_wout_ds(llist)
