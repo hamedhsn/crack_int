@@ -5,7 +5,7 @@ from ch2.linkedlist import LinkedList
 
 # using two pointer
 def find_kth(linked_list, k):
-    """ using two moving pointer in linked list - time complexity O(N)
+    """ using two moving pointer in linked list - time complexity O(N) - space Complexity is O(1)
 
     :param linked_list: input linked list
     :param k: integer k

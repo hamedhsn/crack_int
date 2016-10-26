@@ -64,7 +64,7 @@ class LinkedList:
 
 
 class Node:
-    def __init__(self, d):
+    def __init__(self, d=None):
         self.next = None
         self.data = d
 
