@@ -1,48 +1,77 @@
 from ch2.linkedlist import LinkedList, Node
-import copy
 
 
-def partition(linked_list, part_val):
-    right_ll = None
-    left_ll = None
+def partition_1(linked_list, part_val):
+    """ partition by creating two linked list (one for greater and one for less than target value) and
+    attaching them together
+    Using append the time complexity is O(N2)
+
+    :param linked_list:
+    :param part_val:
+    :return:
+    """
+    right_ll = LinkedList()
+    left_ll = LinkedList()
 
     for item in linked_list.traverse():
-        tmp = copy.deepcopy(item)
-        tmp.next = None
+        if item.data >= part_val:
+            right_ll.append(item.data)
+        else:
+            left_ll.append(item.data)
+
+    for item in left_ll.traverse():
+        pass
+
+    item.next = right_ll.head
+
+    return left_ll
+
+
+def partition_2(linked_list, part_val):
+    """ partition by creating two linked list(one for greater and one for less than target value) and
+    attaching them together
+    creating the two linked list happens in one go so the time complexity is O(N)
+
+    :param linked_list:
+    :param part_val:
+    :return:
+    """
+    right_ll = LinkedList()
+    left_ll = LinkedList()
+
+    for item in linked_list.traverse():
+        tmp = Node(item.data)
+
         if item.data >= part_val:
 
-            if right_ll is None:
-                right_ll = copy.deepcopy(tmp)
-                # rr = copy.copy(item)
+            if right_ll.head is None:
+                right_ll.head = tmp
             else:
-                tmp.next = right_ll.next
-                right_ll.next = copy.deepcopy(tmp)
-                # rr.next = copy.copy(item)
-                # rr = rr.next
+                t = right_ll.head.next
+                tmp.next = t
+                right_ll.head.next = tmp
 
         else:
-            if left_ll is None:
-                left_ll = copy.deepcopy(tmp)
-                # ll = copy.copy(item)
+            if left_ll.head is None:
+                left_ll.head = tmp
             else:
-                tmp.next = left_ll.next
-                left_ll.next = copy.deepcopy(tmp)
+                if left_ll.head.next is None:
+                    last_left_elm = tmp
+                t = left_ll.head.next
+                tmp.next = t
+                left_ll.head.next = tmp
 
-                # ll.next = copy.copy(item)
-                # ll = ll.next
+    last_left_elm.next = right_ll.head
 
-    while left_ll.next:
-        left_en_ref = left_ll
+    return left_ll
 
-    left_en_ref.next = right_ll
-
-    linked_list.head = left_ll
-
-    return linked_list
 
 if __name__ == '__main__':
     linked_list = LinkedList()
-    linked_list.append_few([1, 5, 2, 3, 4, 1, 2, 5, 6, 5, 1])
+    linked_list.append_few([9, 5, 6, 3, 4, 1, 2, 5, 6, 5, 1])
 
-    linked_list = partition(linked_list, 5)
+    linked_list = partition_1(linked_list, 5)
+    linked_list.print_all()
+
+    linked_list = partition_2(linked_list, 5)
     linked_list.print_all()
