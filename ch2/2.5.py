@@ -14,7 +14,10 @@ def sum_list_reverse(ll1, ll2):
 
     tot = ''
     carr = 0
-    while ll1:
+    while ll1 or ll2:
+        ll1 = ll1 if ll1 else Node(0)
+        ll2 = ll2 if ll2 else Node(0)
+
         s = ll1.data + ll2.data + carr
         b = s % 10
         c = int(s / 10)
