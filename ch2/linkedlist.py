@@ -62,6 +62,19 @@ class LinkedList:
                 yield h
                 return
 
+    def create(self, list_items):
+        if len(list_items) == 0:
+            print('list is empty')
+            return
+
+        nn = Node(list_items[0])
+        end = nn
+
+        for item in list_items[1:]:
+            end.next = Node(item)
+            end = end.next
+
+        self.head = nn
 
 class Node:
     def __init__(self, d=None):
@@ -94,3 +107,7 @@ if __name__ == '__main__':
 
     for no, i in enumerate(link_list.traverse(), 1):
         print('No {}: {}'.format(no, i.data))
+
+    link_list = LinkedList()
+    link_list.create([])
+    link_list.print_all()

@@ -68,7 +68,7 @@ def partition_2(linked_list, part_val):
 
 if __name__ == '__main__':
     linked_list = LinkedList()
-    linked_list.append_few([9, 5, 6, 3, 4, 1, 2, 5, 6, 5, 1])
+    linked_list.create([9, 5, 6, 3, 4, 1, 2, 5, 6, 5, 1])
 
     linked_list = partition_1(linked_list, 5)
     linked_list.print_all()
