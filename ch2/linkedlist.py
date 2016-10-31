@@ -85,7 +85,7 @@ class LinkedList:
 
         return num
 
-    def padding_front(self, num, data=None):
+    def padding_after(self, num, data=None):
         if num <= 0 :
             print('padding number is 0')
 
@@ -159,7 +159,7 @@ if __name__ == '__main__':
     link_list.create([1, 2, 3])
     print('\nlength of list: {}'.format(link_list.length()))
 
-    link_list.padding_front(3, data=0)
+    link_list.padding_after(3, data=0)
     link_list.print_all()
 
     link_list.padding_before(3, 0)
