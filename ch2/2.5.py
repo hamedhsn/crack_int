@@ -3,7 +3,7 @@ from ch2.linkedlist import LinkedList, Node
 
 def sum_list_reverse(ll1, ll2):
     """ sume the two list in reverse order - summing digit by digit
-    time complexity is O(N)
+    time complexity is O(N) - Space complexity is O(1)
 
     :param ll1:
     :param ll2:
@@ -39,7 +39,8 @@ def sum_list_reverse(ll1, ll2):
 
 
 def sum_list_reverse_recursive(ll1, ll2):
-    """ same algorithm like sum_list_reverse but in recursive way
+    """ same algorithm like sum_list_reverse but in recursive way -
+    time complexity is O(N) - space complexity is O(N)
 
     :param ll1:
     :param ll2:
@@ -73,6 +74,13 @@ def sum_rec(l1, l2, carry=0):
 
 
 def sum_list_reverse_recursive_followup(ll1, ll2):
+    """ using recursive solution to sum two linked list
+    time complexity is O(N) - space complexity is O(N)
+
+    :param ll1:
+    :param ll2:
+    :return:
+    """
     len1 = ll1.length()
     len2 = ll2.length()
 
