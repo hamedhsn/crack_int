@@ -116,6 +116,12 @@ class LinkedList:
 
         self.head = new_head
 
+    def insert_before(self, data):
+        new_head = Node(data)
+
+        new_head.next = self.head
+
+        self.head = new_head
 
 class Node:
     def __init__(self, d=None):
@@ -163,4 +169,7 @@ if __name__ == '__main__':
     link_list.print_all()
 
     link_list.padding_before(3, 0)
+    link_list.print_all()
+
+    link_list.insert_before(5)
     link_list.print_all()
