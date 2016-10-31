@@ -76,6 +76,47 @@ class LinkedList:
 
         self.head = nn
 
+    def length(self):
+        if self.head is None:
+            return 0
+
+        for num, a in enumerate(self.traverse(), 1):
+            pass
+
+        return num
+
+    def padding_front(self, num, data=None):
+        if num <= 0 :
+            print('padding number is 0')
+
+        for item in self.traverse():
+            pass
+
+        while num > 0:
+            nn = Node(data)
+            item.next = nn
+            item = item.next
+
+            num -= 1
+
+    def padding_before(self, num, data=None):
+        if num <= 0 :
+            print('padding number is 0')
+
+        new_head = Node(data)
+        end = new_head
+
+        while num-1 > 0:
+            end.next = Node(data)
+            end = end.next
+
+            num -= 1
+
+        end.next = self.head
+
+        self.head = new_head
+
+
 class Node:
     def __init__(self, d=None):
         self.next = None
@@ -110,4 +151,16 @@ if __name__ == '__main__':
 
     link_list = LinkedList()
     link_list.create([])
+    link_list.print_all()
+
+    link_list.create([])
+    print('\nlength of list: {}'.format(link_list.length()))
+
+    link_list.create([1, 2, 3])
+    print('\nlength of list: {}'.format(link_list.length()))
+
+    link_list.padding_front(3, data=0)
+    link_list.print_all()
+
+    link_list.padding_before(3, 0)
     link_list.print_all()
