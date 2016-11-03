@@ -52,14 +52,13 @@ def palindrome_runner(linked_list):
     :return:
     """
     is_mid = False
-    odd_len = False
     stack = list()
 
     for item in linked_list.traverse():
 
         if is_mid is False:
 
-            # add head
+            # add head and take care of linked list with one or two items
             if item == linked_list.head:
                 if item.next is None:
                     return True
@@ -87,14 +86,38 @@ def palindrome_runner(linked_list):
 
     return True
 
+def palindrome_runner_alternative(linked_list):
+    fast = linked_list.head
+    slow = linked_list.head
+
+    stack = list()
+
+    while fast is not None and fast.next is not None:
+        stack.append(slow.data)
+        fast = fast.next.next
+        slow = slow.next
+
+    # for case that the length of linked list is odd
+    if fast is not None:
+        slow = slow.next
+
+    while slow is not None:
+        if stack.pop() != slow.data:
+            return False
+        slow = slow.next
+
+    return True
+
 if __name__ == '__main__':
     ll1 = LinkedList()
 
     ll1.create([])
-    print('\n Palindrome check is: {}'.format(palindrome(ll1)))
+    print('\n Palindrome check is: {} '.format(palindrome(ll1)))
 
     # ll1.create([1, 2, 4, 2, 1])
-    ll1.create([1, 2, 4, 3, 1])
+    ll1.create([1, 1])
     print('\n Palindrome check is: {}'.format(palindrome(ll1)))
 
     print('\n Palindrome check using 2nd method is: {}'.format(palindrome_runner(ll1)))
+
+    print('\n Palindrome check using 2nd method alternative is: {}'.format(palindrome_runner(ll1)))
