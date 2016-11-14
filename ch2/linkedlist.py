@@ -1,4 +1,7 @@
 # Linked list implementation
+import copy
+
+
 class LinkedList:
     def __init__(self, data=None):
         if data:
@@ -86,7 +89,7 @@ class LinkedList:
         return num
 
     def padding_after(self, num, data=None):
-        if num <= 0 :
+        if num <= 0:
             print('padding number is 0')
 
         for item in self.traverse():
@@ -100,7 +103,7 @@ class LinkedList:
             num -= 1
 
     def padding_before(self, num, data=None):
-        if num <= 0 :
+        if num <= 0:
             print('padding number is 0')
 
         new_head = Node(data)
@@ -123,6 +126,7 @@ class LinkedList:
 
         self.head = new_head
 
+
 class Node:
     def __init__(self, d=None):
         self.next = None
@@ -131,6 +135,23 @@ class Node:
     def print(self):
         print('\n{}'.format(self.data))
 
+
+# ####### UTILITIES #########
+def reverse_copy(linked_list):
+    ll2 = LinkedList()
+
+    for item in linked_list.traverse():
+        if item == linked_list.head:
+            n = Node(item.data)
+            continue
+
+        tmp = Node(item.data)
+        tmp.next = n
+        n = tmp
+
+    ll2.head = n
+
+    return ll2
 
 if __name__ == '__main__':
     link_list = LinkedList()
@@ -172,4 +193,8 @@ if __name__ == '__main__':
     link_list.print_all()
 
     link_list.insert_before(5)
+    link_list.print_all()
+
+    link_list = reverse_copy(link_list)
+    print('\n This is the reverse copy:')
     link_list.print_all()

@@ -1,4 +1,4 @@
-from ch2.linkedlist import LinkedList, Node
+from ch2.linkedlist import LinkedList, Node, reverse_copy
 
 
 def palindrome(ll1):
@@ -11,26 +11,11 @@ def palindrome(ll1):
     if ll1.head is None:
         print('Linked list is empty')
         return False
+
+    # use reverse copy from linked list
     ll2 = reverse_copy(ll1)
 
     return is_equal(ll1.head, ll2.head)
-
-
-def reverse_copy(linked_list):
-    ll2 = LinkedList()
-
-    for item in linked_list.traverse():
-        if item == linked_list.head:
-            n = Node(item.data)
-            continue
-
-        tmp = Node(item.data)
-        tmp.next = n
-        n = tmp
-
-    ll2.head = n
-
-    return ll2
 
 
 def is_equal(l1, l2):
@@ -86,6 +71,7 @@ def palindrome_runner(linked_list):
 
     return True
 
+
 def palindrome_runner_alternative(linked_list):
     fast = linked_list.head
     slow = linked_list.head
@@ -107,6 +93,7 @@ def palindrome_runner_alternative(linked_list):
         slow = slow.next
 
     return True
+
 
 if __name__ == '__main__':
     ll1 = LinkedList()
