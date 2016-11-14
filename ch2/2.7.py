@@ -4,7 +4,7 @@ from ch2.linkedlist import reverse_copy, LinkedList
 
 
 def find_intersection_reverse_traverse(link_list_1, link_list_2):
-    """ find the intersection node of the two linked list - time and space complexity is O(N)
+    """ find the intersection node of the two linked list - time and space complexity is O(N1+N2)
 
     :param link_list_1: first linked list
     :param link_list_2: second linked list
@@ -40,7 +40,7 @@ def find_intersection_reverse_traverse(link_list_1, link_list_2):
 
 # Second solution
 def find_intersection_ignore_extras(link_list_1, link_list_2):
-    """ find the intersection node of the two linked list - time is O(N) but space complexity is O(1)
+    """ find the intersection node of the two linked list - time is O(N1+N2) but space complexity is O(1)
 
     :param link_list_1:
     :param link_list_2:
