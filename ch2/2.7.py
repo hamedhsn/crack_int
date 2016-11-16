@@ -4,7 +4,10 @@ from ch2.linkedlist import reverse_copy, LinkedList
 
 
 def find_intersection_reverse_traverse(link_list_1, link_list_2):
-    """ find the intersection node of the two linked list - time and space complexity is O(N1+N2)
+    """ find the intersection node of the two linked list -
+     traverse both list and push elements into stack . then at the end compare if the have same end
+     then start popping from stacks and compare until see the same nodes
+    time and space complexity is O(N1+N2)
 
     :param link_list_1: first linked list
     :param link_list_2: second linked list
@@ -40,7 +43,10 @@ def find_intersection_reverse_traverse(link_list_1, link_list_2):
 
 # Second solution
 def find_intersection_ignore_extras(link_list_1, link_list_2):
-    """ find the intersection node of the two linked list - time is O(N1+N2) but space complexity is O(1)
+    """ find the intersection node of the two linked list -
+    traverse both lists and count length then ignore the difference(length(l1) - length(l2)) from
+    the beginning of longer list and then compare the elements unti see the intersection node
+    time is O(N1+N2) but space complexity is O(1)
 
     :param link_list_1:
     :param link_list_2:
